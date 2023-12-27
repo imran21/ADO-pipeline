@@ -1,0 +1,17 @@
+parameters:
+- name: UserName
+  type: string
+  default: 'World'  # Default value if not provided by the user
+
+trigger:
+- '*'
+
+pool:
+  vmImage: 'windows-latest'
+
+jobs:
+- job: HelloWorldJob
+  displayName: 'Print Hello World'
+  steps:
+  - script: echo "Hello $(UserName)! Build ID: $(Build.BuildId)"
+    displayName: 'Print Hello World'
