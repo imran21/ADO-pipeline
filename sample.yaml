@@ -13,5 +13,5 @@ jobs:
 - job: HelloWorldJob
   displayName: 'Print Hello World'
   steps:
-  - script: echo "Hello $(UserName)! Build ID: $(Build.BuildId)"
+  - script: echo "Hello $(UserName)! Build ID $(Build.BuildId)"
     displayName: 'Print Hello World'
