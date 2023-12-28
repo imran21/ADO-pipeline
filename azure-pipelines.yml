@@ -14,12 +14,12 @@ steps:
     echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: |
-    echo "Printing all system variables:"
-    for var in $(compgen -e); do
-      echo "$var=${!var}"
-    done
-  displayName: 'Print System Variables'
+#- script: |
+ #   echo "Printing all system variables:"
+  #  for var in $(compgen -e); do
+   #   echo "$var=${!var}"
+    #done
+  #displayName: 'Print System Variables'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
