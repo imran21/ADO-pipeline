@@ -1,0 +1,32 @@
+stages:
+
+- stage: Snyk_Scan2
+  dependsOn: []
+  displayName: Snyk_Scan
+  jobs:
+  - job: SnykCodeAnalysis
+    displayName: Synk Code Analysis
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '18.17.1'
+      displayName: 'Install Node.js 18.17.1'
+    - task: CmdLine@2
+      inputs:
+    #     script: 'chmod +x npm'
+        script: |
+          yarn install
+          yarn add axios@1.6.0
+          ls -la
+          cat yarn.lock
+          echo "------------------------"
+          cat package.json
+          pwd
+    - task: SnykSecurityScan@1
+      inputs:
+        serviceConnectionEndpoint: 'Snyk Connection'
+        testType: 'app'
+        severityThreshold: 'critical'
+        failOnIssues: false
+        failOnThreshold: 'critical'
+        monitorWhen: 'always'
